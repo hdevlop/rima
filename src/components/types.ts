@@ -81,6 +81,9 @@ export interface CheckboxInputProps extends BaseProps {
 export interface FileInputProps extends BaseProps {
   value: File | string | null;
   onChange: (file: File | null) => void;
+  placeholder?: string;
+  icon?: string;
+  showIcon?: boolean;
 }
 
 export interface PhoneInputProps extends BaseProps {
@@ -91,6 +94,7 @@ export interface PhoneInputProps extends BaseProps {
 export interface DateInputProps extends BaseProps {
   value: Date | undefined;
   onChange: (date: Date | undefined) => void;
+  placeholder?: string;
   icon?: string;
   showIcon?: boolean;
 }
@@ -127,19 +131,24 @@ interface BaseFormInputProps {
   formDescription?: string;
 }
 
-export type FormInputProps =
-  | (BaseFormInputProps & { type: 'password' } & Omit<PasswordInputProps, 'value' | 'onChange'>)
-  | (BaseFormInputProps & { type: 'number' } & Omit<NumberInputProps, 'value' | 'onChange'>)
-  | (BaseFormInputProps & { type: 'text' } & Omit<TextInputProps, 'value' | 'onChange'>)
-  | (BaseFormInputProps & { type: 'textarea' } & Omit<TextAreaInputProps, 'value' | 'onChange'>)
-  | (BaseFormInputProps & { type: 'select' } & Omit<SelectInputProps, 'value' | 'onChange'>)
-  | (BaseFormInputProps & { type: 'radio' } & Omit<RadioGroupInputProps, 'value' | 'onChange'>)
-  | (BaseFormInputProps & { type: 'switch' } & Omit<SwitchInputProps, 'value' | 'onChange'>)
-  | (BaseFormInputProps & { type: 'checkboxGroup' } & Omit<CheckboxGroupInputProps, 'value' | 'onChange'>)
-  | (BaseFormInputProps & { type: 'checkbox' } & Omit<CheckboxInputProps, 'value' | 'onChange'>)
-  | (BaseFormInputProps & { type: 'file' } & Omit<FileInputProps, 'value' | 'onChange'>)
-  | (BaseFormInputProps & { type: 'phone' } & Omit<PhoneInputProps, 'value' | 'onChange'>)
-  | (BaseFormInputProps & { type: 'date' } & Omit<DateInputProps, 'value' | 'onChange'>)
-  | (BaseFormInputProps & { type: 'starRating' } & Omit<StarRatingInputProps, 'value' | 'onChange'>)
-  | (BaseFormInputProps & { type: 'emoji' } & Omit<EmojiInputProps, 'value' | 'onChange'>)
-  | (BaseFormInputProps & { type: 'colorArray' } & Omit<ColorArrayInputProps, 'value' | 'onChange'>);
+type InputTypeMap = {
+  password: Omit<PasswordInputProps, 'value' | 'onChange'>;
+  number: Omit<NumberInputProps, 'value' | 'onChange'>;
+  text: Omit<TextInputProps, 'value' | 'onChange'>;
+  textarea: Omit<TextAreaInputProps, 'value' | 'onChange'>;
+  select: Omit<SelectInputProps, 'value' | 'onChange'>;
+  radio: Omit<RadioGroupInputProps, 'value' | 'onChange'>;
+  switch: Omit<SwitchInputProps, 'value' | 'onChange'>;
+  checkboxGroup: Omit<CheckboxGroupInputProps, 'value' | 'onChange'>;
+  checkbox: Omit<CheckboxInputProps, 'value' | 'onChange'>;
+  file: Omit<FileInputProps, 'value' | 'onChange'>;
+  phone: Omit<PhoneInputProps, 'value' | 'onChange'>;
+  date: Omit<DateInputProps, 'value' | 'onChange'>;
+  starRating: Omit<StarRatingInputProps, 'value' | 'onChange'>;
+  emoji: Omit<EmojiInputProps, 'value' | 'onChange'>;
+  colorArray: Omit<ColorArrayInputProps, 'value' | 'onChange'>;
+};
+
+export type FormInputProps = {
+  [K in keyof InputTypeMap]: BaseFormInputProps & { type: K } & InputTypeMap[K]
+}[keyof InputTypeMap];
