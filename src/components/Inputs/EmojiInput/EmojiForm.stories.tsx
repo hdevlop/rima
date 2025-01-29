@@ -2,7 +2,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Form } from "@/components/ui/form";
 import EmojiForm from "@/components/Inputs/EmojiInput";
-import FormInput from "../../FormInput";
+import FormInput from "../../RimaForm/FormInput";
 
 export default {
   title: "Form/EmojiForm",

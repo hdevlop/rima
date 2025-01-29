@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 import { Form } from "@/components/ui/form";
 import StarRatingForm from "@/components/Inputs/StarRatingInput";
-import FormInput from "../../FormInput";
+import FormInput from "../../RimaForm/FormInput";
 
 export default {
   title: "Form/StarRatingForm",

@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "rima-input": {
+      "signature": "b8dc83fab289aa2ca24189587dbdfe84",
+      "file": true
+    }
+  }
+}

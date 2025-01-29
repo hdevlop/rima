@@ -1,36 +1,41 @@
-"use client";
 
-import FormInput from "./components/FormInput";
-import { useForm } from "react-hook-form";
-import { Form } from "./components/ui/form";
+import { z } from "zod";
+import Form from "./components/RimaForm/Form";
+import FormInput from "./components/RimaForm/FormInput";
+
+const schema = z.object({
+   email: z.string().email({ message: "Please enter a valid email address." }),
+});
+
+
 
 const App = () => {
 
-
-   const form = useForm({ defaultValues: { email: '' } });
-
-   const onSubmit = (data: any) => {
+   const onSubmit = (data) => {
       console.log(data);
    };
 
    return (
       <div className="p-4">
-         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="w-96 space-y-6" autoComplete="off">
-               <FormInput
-                  control={form.control}
-                  name="email"
-                  type="text"
-                  formLabel="Email"
-                  placeholder="Enter your email"
-                  variant="default"
-               />
-               <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md" >
-                  Submit
-               </button>
-            </form>
+
+         <Form
+            schema={schema}
+            defaultValues={{ email: "" }}
+            onSubmit={onSubmit}
+            className="w-96 space-y-6"
+         >
+            <FormInput
+               name="email"
+               type="text"
+               formLabel="Email"
+               placeholder="Enter your email"
+               variant="default"
+            />
          </Form>
 
+         <button type="submit"  className="bg-blue-500 text-white py-2 px-4 rounded-md mt-4">
+            Submit
+         </button>
       </div>
    );
 };

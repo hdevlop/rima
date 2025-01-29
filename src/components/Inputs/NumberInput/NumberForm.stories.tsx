@@ -1,7 +1,7 @@
 // CustomField-NumberInput.stories.tsx
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Form } from '@/components/ui/form';
-import CustomField from '@/components/FormInput';
+import CustomField from '@/components/RimaForm/FormInput';
 
 export default {
   title: 'Form/NumberInput',

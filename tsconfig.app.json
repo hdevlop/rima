@@ -29,5 +29,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "src/components/Inputs/SelectInput/SelectInput.tsx"]
+  "include": ["src", "src/components/Inputs/SelectInput/SelectInput.tsx"],
+  "exclude": ["node_modules", "dist"]
 }

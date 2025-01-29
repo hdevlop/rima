@@ -17,7 +17,8 @@ import {
   PhoneInput,
   ColorArrayInput,
   ColorPickerInput,
-} from "@/index";
+} from "@/components/index";
+import { useFormContext } from 'react-hook-form';
 
 import { FormInputProps } from "../types";
 
@@ -41,7 +42,6 @@ export const formInputs: Record<string, React.FC<any>> = {
 };
 
 const Input: React.FC<FormInputProps> = ({
-  control,
   name,
   type,
   formLabel,
@@ -49,6 +49,7 @@ const Input: React.FC<FormInputProps> = ({
   ...rest
 }) => {
   const InputComponent = formInputs[type];
+  const { control } = useFormContext();
 
   return (
     <FormField

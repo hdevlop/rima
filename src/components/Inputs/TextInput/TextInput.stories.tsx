@@ -1,7 +1,7 @@
 // TextFormInput.stories.tsx
 import { useForm } from 'react-hook-form';
 import { Form } from '@/components/ui/form';
-import FormInput from '@/components/FormInput';
+import FormInput from '@/components/RimaForm/FormInput';
 
 export default {
   title: 'Form/TextInput',

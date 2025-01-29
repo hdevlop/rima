@@ -125,7 +125,6 @@ export interface IconWrapperProps {
 }
 
 interface BaseFormInputProps {
-  control: any;
   name: string;
   formLabel?: string;
   formDescription?: string;
